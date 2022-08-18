@@ -16,10 +16,27 @@ compressed_extensions = ('.zip', '.rar', '.rar5', '.7z', '.ace', '.gz')
 documents_extensions = ('.xlsx', '.pptx', '.csv')
 executable_extensions = ('.exe', '.msi', '.app', '.dmg', '.torrent', '.alfredworkflow')
 
+def user_option():
+    while True:
+        option = input("Do you want the script to create the missing folders? (y/n): ").lower()
+        if option != "n" and option != "y":
+            print("Please type a given option. ")
+        else:
+            if option == "y":
+                create_folders()
+            else:
+                print("This script need to create the folders in order to organize all the files.\nType e to exit.")
+            break
 
+def create_folders():
+    for folder in folders:
+        new_folder = os.path.join(downloads_path, folder)
+        if not os.path.exists(new_folder):
+            os.mkdir(new_folder)
 
+ 
 def main():
-    pass
+    user_option()
 
 if __name__ == '__main__':
     main()
